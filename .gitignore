@@ -3,4 +3,5 @@ __pycache__/
 *.joblib
 *.venv
 *.vscode
+*.mypy_cache
 
