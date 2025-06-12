@@ -4,4 +4,3 @@ __pycache__/
 *.venv
 .vscode
 *.mypy_cache
-
