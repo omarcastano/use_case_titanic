@@ -2,9 +2,9 @@ import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-# load trained model
 from src.app.model.model import TitanicModel
 
+# load trained model
 model = TitanicModel()
 model.load_model("src/app/model/trained_models/titanic_model.joblib")
 
