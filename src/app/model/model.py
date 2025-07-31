@@ -22,11 +22,11 @@ class TitanicModel:
     def __init__(self) -> None:
         """Initializes the TitanicModel with preprocessing pipelines and a logistic regression model."""
 
-        self.nomical_cat_features = ["sex"]
+        self.nominal_cat_features = ["sex"]
         self.ordinal_cat_features = ["pclass"]
         self.num_features = ["age"]
 
-        self.nomical_cat_features_preprocess = Pipeline(
+        self.nominal_cat_features_preprocess = Pipeline(
             steps=[("imputer", SimpleImputer(strategy="most_frequent")), ("onehot", OneHotEncoder(handle_unknown="ignore"))]
         )
 
@@ -40,7 +40,7 @@ class TitanicModel:
 
         self.preprocessor = ColumnTransformer(
             transformers=[
-                ("nominal_cat", self.nomical_cat_features_preprocess, self.nomical_cat_features),
+                ("nominal_cat", self.nominal_cat_features_preprocess, self.nominal_cat_features),
                 ("ordinal_cat", self.ordinal_cat_features_preprocess, self.ordinal_cat_features),
                 ("num", self.num_features_preprocess, self.num_features),
             ]
@@ -49,7 +49,7 @@ class TitanicModel:
         self.model = Pipeline(
             steps=[
                 ("preprocessor", self.preprocessor),
-                ("classifier", LogisticRegression(max_iter=1000, random_state=42)),
+                ("classifier", LogisticRegression(max_iter=1000, random_state=42, solver="liblinear")),
             ]
         )
 
