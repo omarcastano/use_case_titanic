@@ -5,6 +5,7 @@ description = "Applyed MLOps to titanic use case"
 readme = "README.md"
 requires-python = ">=3.11, <3.13"
 dependencies = [
+    "dvc>=3.61.0",
     "fastapi>=0.115.12",
     "ipykernel>=6.29.5",
     "mlflow>=3.1.4",
