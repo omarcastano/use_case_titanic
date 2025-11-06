@@ -8,7 +8,7 @@ if __name__ == "__main__":
     from src.app.model.optimize import ModelOptimizer
 
     # get data
-    data = get_dataset()
+    train, test = get_dataset()
 
     # define model
     model = TitanicModel()
@@ -20,6 +20,6 @@ if __name__ == "__main__":
         "classifier__penalty": ["l1", "l2"],
     }
 
-    optimizer = ModelOptimizer(model, param_grid, mlflow_uri="http://127.0.0.1:5000")
-    optimizer.optimize(data.drop(columns=["survived"]), data["survived"].to_numpy())
+    optimizer = ModelOptimizer(model, param_grid, mlflow_uri="https://dagshub.com/omar.castano25/use_case_titanic.mlflow")
+    optimizer.optimize(train.drop(columns=["survived"]), train["survived"].to_numpy())
     optimizer.save_model("src/app/model/trained_models/optimized_titanic_model.joblib")

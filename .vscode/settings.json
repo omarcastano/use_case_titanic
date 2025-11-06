@@ -74,5 +74,6 @@
     "editor.formatOnSave": true,
     "notebook.defaultFormatter": "ms-python.black-formatter",
     "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.defaultFoldingRangeProvider": "ms-python.black-formatter"
+    "editor.defaultFoldingRangeProvider": "ms-python.black-formatter",
+    "windsurfPyright.disableLanguageServices": true
 }

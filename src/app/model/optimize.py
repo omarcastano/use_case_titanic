@@ -53,6 +53,10 @@ class ModelOptimizer:
 
         if self.mlflow_uri:
             try:
+                import dagshub
+
+                dagshub.init(repo_owner="omar.castano25", repo_name="use_case_titanic", mlflow=True)
+
                 # set mlflow server
                 mlflow.set_tracking_uri(self.mlflow_uri)
 
@@ -64,9 +68,9 @@ class ModelOptimizer:
                     mlflow.log_metric("accuracy", grid_search.best_score_)
                     mlflow.sklearn.log_model(
                         sk_model=grid_search.best_estimator_,
-                        name="titanic_model",
+                        artifact_path="titanic_model",
                         input_example=X.iloc[[0]],
-                        signature=mlflow.models.infer_signature(X, y),
+                        # signature=mlflow.models.infer_signature(X, y),
                         registered_model_name="Best Titanic Model",
                     )
             except Exception as e:
